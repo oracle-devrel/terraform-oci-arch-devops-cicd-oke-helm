@@ -107,7 +107,7 @@ resource "oci_devops_deploy_artifact" "test_deploy_helm_artifact" {
   argument_substitution_mode = "NONE"
   deploy_artifact_source {
     deploy_artifact_source_type = "HELM_CHART"
-    chart_url = "oci://${local.ocir_docker_repository}/${local.ocir_namespace}/${oci_artifacts_container_repository.test_container_repository_helm.display_name}/${var.deploy_helm_chart_name}"
+    chart_url = "oci://${local.ocir_docker_repository}/${local.ocir_namespace}/devops-helm-${random_id.tag.hex}/${var.deploy_helm_chart_name}"
     deploy_artifact_version = "0.1.0-$${BUILDRUN_HASH}"
   }
   defined_tags = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
