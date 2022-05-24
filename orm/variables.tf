@@ -43,7 +43,7 @@ variable "repository_repository_type" {
 }
 
 variable "git_repo" {
-  default = "https://github.com/ashok-cm/oci-devops-node-service-helm.git"
+  default = "https://github.com/oracle-devrel/helm-oci-devops-node-service.git"
 }
 
 variable "git_repo_name" {
