@@ -106,7 +106,6 @@ variableGroups:
       and:
         - show_advanced 
   variables:
-    - build_pipeline_stage_deliver_artifact_collection_items_artifact_name
     - deliver_artifact_stage_description
     - deliver_artifact_stage_display_name
 
