@@ -366,10 +366,11 @@ variables:
   argument_substitution_mode:
     type: enum
     enum:
+      - "SUBSTITUTE_PLACEHOLDERS"
       - "NONE"
     title: "Argument substitution for the Artifact"
     description: "Artifacts can have arguments that are substituted with values are runtime. Stack currently supports only NONE"
-    default: "NONE"
+    default: "SUBSTITUTE_PLACEHOLDERS"
 
   git_repo:
     type: string
