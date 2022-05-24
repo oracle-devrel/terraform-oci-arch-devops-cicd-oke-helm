@@ -1,6 +1,6 @@
-title: "Build a CI/CD pipelines by using OCI DevOps services to deploy with Helm in OKE."
-stackDescription: "Build a continuous integration and deployment pipeline by using Oracle Cloud Infrastructure DevOps services to deploy with Helm in OKE." 
-description: "Build a continuous integration and deployment pipeline by using Oracle Cloud Infrastructure DevOps services to deploy with Helm in OKE."
+title: "Build a CI/CD pipelines by using OCI DevOps services to deploy helm based application in OKE."
+stackDescription: "Build a continuous integration and deployment pipeline by using Oracle Cloud Infrastructure DevOps services to deploy helm based application in OKE." 
+description: "Build a continuous integration and deployment pipeline by using Oracle Cloud Infrastructure DevOps services to deploy helm based application in OKE."
 schemaVersion: 1.1.0
 version: "20190304"
 locale: "en"
@@ -49,6 +49,11 @@ variableGroups:
   - build_pipeline_stage_build_source_collection_items_branch
   - build_pipeline_stage_build_source_collection_items_name
   - build_pipeline_stage_build_spec_file
+  - container_repository_is_public
+  - deploy_artifact_source_type
+  - deploy_artifact_type
+  - argument_substitution_mode
+  - git_repo_name
 
 - title: "Required Configuration"
   visible: true  
@@ -83,12 +88,7 @@ variableGroups:
       and:
         - show_advanced
   variables:
-    - container_repository_is_public
-    - deploy_artifact_source_type
-    - deploy_artifact_type
-    - argument_substitution_mode
     - git_repo
-    - git_repo_name
     - repository_default_branch
     - repository_description
     - repository_name
@@ -179,25 +179,16 @@ variableGroups:
 # Output Groups
 #################
 outputGroups:
-- title: Service Endpoints
-  outputs:
-    - theia_public_ip
 - title: Generated Passwords
   outputs:
     - generated_ssh_private_key
 
 outputs:
-  theia_public_ip:
-    type: link
-    title: Your Theia website
-    description: Open Theia website
   generated_ssh_private_key:
     title: "Generated SSH Private Key"
     description: "Generated SSH Private Key"
     type: copyableString
     visible: true
-
-primaryOutputButton: theia_public_ip
 
 ######################
 # Variable Definitions
@@ -245,8 +236,6 @@ variables:
     visible: true
     default: false
 
-## DevOps
-
   log_group_display_name:
     type: string
     title: "Log Group Name"
@@ -267,7 +256,6 @@ variables:
       and:
         - show_advanced
 
-
   project_description:
     type: string
     title: "DevOps Project Description"
@@ -277,7 +265,6 @@ variables:
     visible: 
       and:
         - show_advanced
-
 
   project_logging_config_display_name_prefix:
     type: string
@@ -308,10 +295,6 @@ variables:
     visible: 
       and:
         - show_advanced
-  
-  #############
-  # Environment
-  ############# 
 
   environment_type:
     type: enum
@@ -337,50 +320,10 @@ variables:
     title: "Environment Name"
     description: "Name for the DevOps Environment"
 
-
-  ############
-  # Artifacts & Repos
-  ############
-
-  container_repository_is_public:
-    type: boolean
-    title: "Container Repository public?"
-    description: "Check if OCIR Repository should be public."
-
-  deploy_artifact_source_type:
-    type: enum
-    enum:
-      - "INLINE"
-    title: "Artifact Source Type"
-    description: "The source type of artifact. Stack currently supports only INLINE"
-    default: "INLINE"
-
-  deploy_artifact_type:
-    type: enum
-    enum:
-      - "KUBERNETES_MANIFEST"
-    title: "Artifact Type"
-    description: "The type of Artifact. Stack currently supports only KUBERNETES_MANIFEST"
-    default: "KUBERNETES_MANIFEST"
-
-  argument_substitution_mode:
-    type: enum
-    enum:
-      - "SUBSTITUTE_PLACEHOLDERS"
-      - "NONE"
-    title: "Argument substitution for the Artifact"
-    description: "Artifacts can have arguments that are substituted with values are runtime. Stack currently supports only NONE"
-    default: "SUBSTITUTE_PLACEHOLDERS"
-
   git_repo:
     type: string
     title: "Git Repo URL"
     description: "Type URL of Git Repo"
-
-  git_repo_name:
-    type: string
-    title: "Git Repo Name"
-    description: "Type Git Repo Name"
 
   repository_default_branch:
     type: string
@@ -396,10 +339,6 @@ variables:
     type: string
     title: "Repository Name"
     description: "Type Repository Name"    
-
-  ###########
-  # Pipeline
-  ###########
 
   build_pipeline_description:
     type: string
@@ -494,10 +433,6 @@ variables:
     type: string
     title: "Deploy Helm Chart Name"
     description: "Deploy Helm Chart Name in DevOps Build Pipeline Deploy Stage"
-
-  ####################  
-  ## OKE 
-  ####################
 
   create_new_oke_cluster:
     type: boolean
