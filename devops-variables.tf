@@ -9,8 +9,8 @@ variable "notification_topic_name" {
   default = "devops-topic"
 }
 
-variable "execute_deployment" {
-  default = false
+variable "execute_build_pipeline" {
+  default = true
 }
 
 variable "project_description" {
