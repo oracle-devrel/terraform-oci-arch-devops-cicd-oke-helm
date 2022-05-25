@@ -71,24 +71,6 @@ variable "user_admin_group_for_vault_policy" {
   description = "User Identity Group to allow manage vault and keys. The user running the Terraform scripts or Applying the ORM Stack need to be on this group"
 }
 
-# ## OKE Autoscaler
-# variable "cluster_autoscaler_enabled" {
-#   default     = true
-#   description = "Enables OKE cluster autoscaler. Node pools will auto scale based on the resources usage"
-# }
-# variable "cluster_autoscaler_min_nodes" {
-#   default     = 3
-#   description = "Minimum number of nodes on the node pool to be scheduled by the Kubernetes"
-# }
-# variable "cluster_autoscaler_max_nodes" {
-#   default     = 10
-#   description = "Maximum number of nodes on the node pool to be scheduled by the Kubernetes"
-# }
-# variable "existent_oke_nodepool_id_for_autoscaler" {
-#   default     = ""
-#   description = "Nodepool Id of the existent OKE to use with Cluster Autoscaler"
-# }
-
 ## OKE Node Pool Details
 variable "node_pool_name" {
   default     = "pool1"
@@ -103,7 +85,7 @@ variable "num_pool_workers" {
   description = "The number of worker nodes in the node pool. If select Cluster Autoscaler, will assume the minimum number of nodes configured"
 }
 variable "node_pool_shape" {
-  default     = "VM.Standard.E3.Flex"
+  default     = "VM.Standard.E4.Flex"
   description = "A shape is a template that determines the number of OCPUs, amount of memory, and other resources allocated to a newly created instance for the Worker Node"
 }
 variable "node_pool_node_shape_config_ocpus" {
