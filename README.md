@@ -2,7 +2,13 @@
 
 Rapid delivery of software is essential for efficiently running your applications in the cloud. Oracle DevOps service provides an end-to-end continuous deployment experience to developers. Oracle DevOps service includes deployment pipelines to automate your continuous software delivery and deployment process (CD) to Oracle Cloud Infrastructure (OCI) platforms: Container Engine for Kubernetes (OKE), Functions, and Compute instances. Automating software releases with pipeline deployment increases developer productivity and allows you to release features more frequently and with fewer errors. It helps avoid downtime during deployments and automates the complexity of updating applications. Oracle DevOps can be used by both customers migrating workloads from on-premises or other clouds to OCI and customers developing new applications on OCI.
 
-In this architecture, a sample NodeJS application is deployed via Helm Chart from Code Repository using OCI DevOps service. The application is deployed to OKE cluster. To simplify the process, we use Terraform for infrastructure automation.
+This architecture shows a sample NodeJS application deployed with Helm Chart from the Code Repository using the Oracle Cloud Infrastructure (OCI) DevOps service. The application is deployed to Oracle Cloud Infrastructure Container Engine for Kubernetes (OKE) cluster. To simplify the process, we use Terraform for infrastructure automation.
+
+For details of the architecture, see [Deploy a Helm-based application with OCI DevOps](https://docs.oracle.com/en/solutions/deploy-helm-based-app-oci-devops/)
+
+## Architecture Diagram
+
+![](./images/dev-ops-helm-deployment-pipeline.png)
 
 ## Prerequisites
 
@@ -86,5 +92,9 @@ When you no longer need the deployment, you can run this command to destroy the 
 
     terraform destroy
 
+## License
+Copyright (c) 2022 Oracle and/or its affiliates.
 
+Licensed under the Universal Permissive License (UPL), Version 1.0.
 
+See [LICENSE](LICENSE) for more details.

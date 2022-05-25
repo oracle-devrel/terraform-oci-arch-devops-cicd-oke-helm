@@ -67,7 +67,7 @@ variableGroups:
   variables:
     - compartment_id
     - app_name
-    - execute_deployment
+    - execute_build_pipeline
     - log_group_display_name
     - notification_topic_name
     - project_description
@@ -206,10 +206,10 @@ variables:
     title: "Project Name"
     required: true
 
-  execute_deployment:
+  execute_build_pipeline:
     type: boolean
-    title: "Execute deployment in DevOps Pipeline?"
-    description: "Choose if you want to start deployment in DevOps Pipeline as a part of this Terraform automation."
+    title: "Execute Build Pipeline in DevOps Pipeline?"
+    description: "Choose if you want to start build in DevOps Pipeline as a part of this Terraform automation."
     visible: true
     default: false
   
