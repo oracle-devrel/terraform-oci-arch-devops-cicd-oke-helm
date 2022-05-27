@@ -86,12 +86,23 @@ Run the following commands:
     terraform plan
     terraform apply
 
+### Validate the deployment
+
+- Switch to `OCI Console` > `Developer Services` > `DevOps` > `Projects`> `Project name`
+- Select the `Build pipeline` and validate a build run is completed ,if not invoke one using `Start manual run` option.
+- Wait for the `Build stages` and `Deployments` are completed.
+- Swutch to `OCI Console` > `Developer Services` > `Containers & Artifacts` >`Kubernetes Cluster (OKE)`
+- Under the OKE Cluster ,follow `Access Cluster` option and establish a connectivity to the cluster.
+- Execute `kubectl get service/node-service` and fetch the EXTERNAL-IP and lauch the application using browser - http://EXTERNAL-IP.
 
 ### Destroy the Deployment
 When you no longer need the deployment, you can run this command to destroy the resources:
 
-    terraform destroy
+- Delete the loadBalancer created by the helm deplpyment , via `OCI Console` > `Networking` > `LoadBalancer`
 
+```
+    terraform destroy
+```
 ## License
 Copyright (c) 2022 Oracle and/or its affiliates.
 
